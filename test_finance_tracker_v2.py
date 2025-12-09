@@ -303,5 +303,27 @@ def test_empty_tracker(temp_tracker):
     assert temp_tracker.get_balance() == 0.0
     assert temp_tracker.get_expense_by_category() == {}
 
+def test_export_functionality(temp_tracker):
+    """
+    Test CSV export functionality.
+    """
+    # Add some transactions
+    temp_tracker.add_transaction("2025-11-18", "Cash", "Food",
+                                 "Lunch", "Expense", 15.00)
+    temp_tracker.add_transaction("2025-11-19", "Card", "Transportation",
+                                 "Bus", "Expense", 3.00)
+
+    # Export to file
+    export_file = "test_export.csv"
+    temp_tracker.export_to_csv(export_file)
+
+    # Verify file was created and contains data
+    assert os.path.exists(export_file)
+
+    exported_df = pd.read_csv(export_file)
+    assert len(exported_df) == 2
+
+    # Cleanup
+    os.remove(export_file)
 
 
