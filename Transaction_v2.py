@@ -59,6 +59,15 @@ class Transaction:
         """
         return self.trans_type == "Income"
 
+    def is_expense(self):
+        """
+        Check if transaction is expense.
+
+        Returns:
+            bool: True if expense, False otherwise
+        """
+        return self.trans_type == "Expense"
+
     def __str__(self):
         """
         String representation of the transaction.
@@ -78,4 +87,5 @@ class Transaction:
         """
 
         return f"Transaction(date='{self.date}', category='{self.category}', amount={self.amount})"
+
 
