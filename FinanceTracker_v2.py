@@ -97,7 +97,18 @@ class FinanceTracker:
         self.save_data()
 
     def add_transaction(self, date, mode, category, sub_category, trans_type, amount, notes=""):
+        """
+        Add a new transaction to the tracker.
 
+        Args:
+            date (str): Date of transaction
+            mode (str): Payment method
+            category (str): Transaction category
+            sub_category (str): Transaction subcategory
+            trans_type (str): "Income" or "Expense"
+            amount (float): Transaction amount
+            notes (str): Optional notes
+        """
         # Create new transaction object
         new_trans = Transaction(date, mode, category, sub_category, trans_type, amount, notes)
         self.transactions.append(new_trans)
@@ -377,3 +388,4 @@ class FinanceTracker:
             self.df = self.df.drop(index).reset_index(drop=True)
 
             self.save_data()
+
