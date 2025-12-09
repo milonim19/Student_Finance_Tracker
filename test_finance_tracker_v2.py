@@ -228,6 +228,24 @@ def test_budget_management(temp_tracker):
     assert status['percentage'] == 80.0
     assert status['over_budget'] == False
 
+def test_budget_over_limit(temp_tracker):
+    """
+    Test budget checking when over limit.
+    """
+    # Set budget
+    temp_tracker.set_budget("Entertainment", 50.00)
+
+    # Add expenses over budget
+    temp_tracker.add_transaction("2025-11-18", "Card", "Entertainment",
+                                 "Concert", "Expense", 60.00)
+
+    # Check status
+    status = temp_tracker.check_budget_status("Entertainment")
+
+    assert status['over_budget'] == True
+    assert status['spent'] > status['budget']
+
+
 
 def test_search_transactions(temp_tracker):
     """
@@ -325,5 +343,6 @@ def test_export_functionality(temp_tracker):
 
     # Cleanup
     os.remove(export_file)
+
 
 
