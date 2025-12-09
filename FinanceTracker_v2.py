@@ -323,6 +323,16 @@ class FinanceTracker:
         )
         return self.df[mask]
 
+        def set_budget(self, category, amount):
+        """
+        Set a budget limit for a category.
+
+        Args:
+            category (str): Category name
+            amount (float): Budget amount
+        """
+        self.budgets[category] = float(amount)
+    
     def get_budget(self, category):
         """
         Get budget for a category.
@@ -412,5 +422,6 @@ class FinanceTracker:
             self.df = self.df.drop(index).reset_index(drop=True)
 
             self.save_data()
+
 
 
