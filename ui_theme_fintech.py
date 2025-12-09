@@ -8,6 +8,39 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import font as tkfont
 
+def _set_default_fonts(root: tk.Tk):
+    #Safely set default fonts using Tk named fonts.
+    try:
+        default = tkfont.nametofont("TkDefaultFont")
+        text = tkfont.nametofont("TkTextFont")
+        fixed = tkfont.nametofont("TkFixedFont")
+    except tk.TclError:
+        default = tkfont.Font(name="TkDefaultFont", exists=False)
+        text = tkfont.Font(name="TkTextFont", exists=False)
+        fixed = tkfont.Font(name="TkFixedFont", exists=False)
+
+    preferred = ["Segoe UI", "SF Pro Text", "Helvetica", "Arial"]
+    family = None
+    for fam in preferred:
+        try:
+            if fam in tkfont.families(root):
+                family = fam
+                break
+        except Exception:
+            pass
+    if family is None:
+        family = default.cget("family")
+
+    for f in (default, text):
+        try:
+            f.configure(family=family, size=10)
+        except Exception:
+            pass
+    try:
+        fixed.configure(size=10)
+    except Exception:
+        pass
+
 
 def apply_fintech_theme(root: tk.Tk):
     # Apply colors
