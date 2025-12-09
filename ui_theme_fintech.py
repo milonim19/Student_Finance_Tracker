@@ -83,7 +83,12 @@ def apply_fintech_theme(root: tk.Tk):
               background=[("active", ACCENT_2), ("disabled", BORDER)],
               foreground=[("disabled", "#94A3B8")])
 
-
+    # Tabs
+    style.configure("TNotebook", background=BG, borderwidth=0)
+    style.configure("TNotebook.Tab", padding=[12, 6], background=SURFACE, foreground=MUTED)
+    style.map("TNotebook.Tab",
+              background=[("selected", ACCENT_SOFT)],
+              foreground=[("selected", ACCENT_2)])
 
     # Combobox
     style.configure("TCombobox", fieldbackground=SURFACE, background=SURFACE)
