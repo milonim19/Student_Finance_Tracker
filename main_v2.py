@@ -170,7 +170,18 @@ class FinanceTrackerGUI:
         self.amount_entry = ttk.Entry(row3, width=15)
         self.amount_entry.pack(side=tk.LEFT, padx=5)
 
+        # Row 4: Notes
+        row4 = ttk.Frame(form_frame)
+        row4.pack(fill='x', pady=5)
 
+        ttk.Label(row4, text="Notes:").pack(side=tk.LEFT, padx=5)
+        self.notes_entry = ttk.Entry(row4, width=50)
+        self.notes_entry.pack(side=tk.LEFT, padx=5, fill='x', expand=True)
+
+        # Add button
+        add_button = ttk.Button(form_frame, text="➕ Add Transaction",
+                                command=self.add_transaction)
+        add_button.pack(pady=10)
         # Filter and display frame
         display_frame = ttk.LabelFrame(trans_frame, text="Transaction History", padding=10)
         display_frame.pack(pady=10, padx=20, fill='both', expand=True)
@@ -608,3 +619,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
