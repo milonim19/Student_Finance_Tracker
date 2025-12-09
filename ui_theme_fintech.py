@@ -64,10 +64,14 @@ def apply_fintech_theme(root: tk.Tk):
     except tk.TclError:
         pass
 
+# Setting fonts
+    _set_default_fonts(root)
 
-
-
-
+    # Frames
+    style.configure("TFrame", background=BG)
+    style.configure("TLabelframe", background=SURFACE, borderwidth=1, relief="solid")
+    style.configure("TLabelframe.Label", background=SURFACE, foreground=TEXT, font=("TkDefaultFont", 11, "bold"))
+    style.map("TLabelframe", background=[("active", SURFACE)])
 
     # Labels
     style.configure("TLabel", background=SURFACE, foreground=TEXT)
