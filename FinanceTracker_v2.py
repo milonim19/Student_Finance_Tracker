@@ -149,6 +149,30 @@ class FinanceTracker:
         income_df = df_filtered[df_filtered['Income/Expense'] == 'Income']
         return float(income_df['Amount'].sum()) if not income_df.empty else 0.0
 
+        def get_total_expenses(self, start_date=None, end_date=None):
+        """
+        Calculate total expenses from all transactions or within date range.
+
+        Args:
+            start_date (str): Optional start date filter
+            end_date (str): Optional end date filter
+
+        Returns:
+            float: Total expense amount
+        """
+        if self.df.empty:
+            return 0.0
+
+        df_filtered = self.df.copy()
+
+        # Apply date filters if provided
+        if start_date:
+            df_filtered = df_filtered[df_filtered['Date'] >= start_date]
+        if end_date:
+            df_filtered = df_filtered[df_filtered['Date'] <= end_date]
+
+        expense_df = df_filtered[df_filtered['Income/Expense'] == 'Expense']
+        return float(expense_df['Amount'].sum()) if not expense_df.empty else 0.0
 
     def get_balance(self):
         """
@@ -388,4 +412,5 @@ class FinanceTracker:
             self.df = self.df.drop(index).reset_index(drop=True)
 
             self.save_data()
+
 
