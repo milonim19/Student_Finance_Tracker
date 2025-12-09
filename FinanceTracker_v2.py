@@ -268,6 +268,25 @@ class FinanceTracker:
 
         return self.df[self.df['Income/Expense'] == trans_type]
 
+    def search_transactions(self, keyword):
+        """
+        Search transactions by keyword in subcategory or notes.
+
+        Args:
+            keyword (str): Keyword to search for
+
+        Returns:
+            pandas.DataFrame: Matching transactions
+        """
+        if self.df.empty:
+            return self.df
+
+        keyword_lower = keyword.lower()
+        mask = (
+                self.df['Sub Category'].str.lower().str.contains(keyword_lower, na=False) |
+                self.df['Notes'].str.lower().str.contains(keyword_lower, na=False)
+        )
+        return self.df[mask]
 
     def get_budget(self, category):
         """
@@ -356,4 +375,5 @@ class FinanceTracker:
         if 0 <= index < len(self.transactions):
             del self.transactions[index]
             self.df = self.df.drop(index).reset_index(drop=True)
+
             self.save_data()
