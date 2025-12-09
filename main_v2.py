@@ -244,7 +244,31 @@ class FinanceTrackerGUI:
         self.trans_tree.pack(side=tk.LEFT, fill='both', expand=True)
         scrollbar.pack(side=tk.RIGHT, fill='y')
 
+    def create_analytics_tab(self):
+        """
+        Create the analytics tab with visualizations.
+        """
+        analytics_frame = ttk.Frame(self.notebook)
+        self.notebook.add(analytics_frame, text="📈 Analytics")
 
+        # Title
+        ttk.Label(analytics_frame, text="Financial Analytics",
+                  font=('Arial', 16, 'bold')).pack(pady=10)
+
+        # Controls frame
+        control_frame = ttk.Frame(analytics_frame)
+        control_frame.pack(pady=10)
+
+        ttk.Button(control_frame, text="📊 Show Category Breakdown",
+                   command=self.show_category_chart).pack(side=tk.LEFT, padx=5)
+        ttk.Button(control_frame, text="📈 Show Monthly Trend",
+                   command=self.show_monthly_trend).pack(side=tk.LEFT, padx=5)
+        ttk.Button(control_frame, text="📉 Show Spending Trend",
+                   command=self.show_spending_trend).pack(side=tk.LEFT, padx=5)
+
+        # Chart frame
+        self.chart_frame = ttk.Frame(analytics_frame)
+        self.chart_frame.pack(fill='both', expand=True, padx=20, pady=10)
 
     def add_transaction(self):
         """
@@ -619,4 +643,5 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
