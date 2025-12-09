@@ -68,6 +68,17 @@ class Transaction:
         """
         return self.trans_type == "Expense"
 
+    
+    def get_month(self):
+        """
+        Extract month from transaction date.
+
+        Returns:
+            str: Month in format YYYY-MM
+        """
+        return self.date[:7]
+
+
     def __str__(self):
         """
         String representation of the transaction.
@@ -87,5 +98,6 @@ class Transaction:
         """
 
         return f"Transaction(date='{self.date}', category='{self.category}', amount={self.amount})"
+
 
 
