@@ -33,6 +33,23 @@ class Transaction:
         self.amount = float(amount)
         self.notes = notes
 
+    def to_dict(self):
+        """
+        Convert transaction to dictionary format for easy storage and processing.
+
+        Returns:
+            dict: Dictionary containing all transaction details
+        """
+        return {
+            'Date': self.date,
+            'Mode': self.mode,
+            'Category': self.category,
+            'Sub Category': self.sub_category,
+            'Income/Expense': self.trans_type,
+            'Amount': self.amount,
+            'Notes': self.notes
+        }
+
 
     def __str__(self):
         """
@@ -51,4 +68,5 @@ class Transaction:
         Returns:
             str: Detailed transaction info
         """
+
         return f"Transaction(date='{self.date}', category='{self.category}', amount={self.amount})"
