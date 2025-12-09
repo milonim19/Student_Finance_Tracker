@@ -203,7 +203,30 @@ def test_date_range_filtering(temp_tracker):
 
     assert income_mid_month == 20.00
 
+def test_budget_management(temp_tracker):
+    """
+    Test budget setting and checking functionality.
+    """
+    # Set budget for Food category
+    temp_tracker.set_budget("Food", 100.00)
 
+    # Verify budget was set
+    assert temp_tracker.get_budget("Food") == 100.00
+
+    # Add some expenses
+    temp_tracker.add_transaction("2025-11-18", "Cash", "Food",
+                                 "Lunch", "Expense", 50.00)
+    temp_tracker.add_transaction("2025-11-19", "Cash", "Food",
+                                 "Dinner", "Expense", 30.00)
+
+    # Check budget status
+    status = temp_tracker.check_budget_status("Food")
+
+    assert status['budget'] == 100.00
+    assert status['spent'] == 80.00
+    assert status['remaining'] == 20.00
+    assert status['percentage'] == 80.0
+    assert status['over_budget'] == False
 
 
 def test_search_transactions(temp_tracker):
@@ -279,5 +302,6 @@ def test_empty_tracker(temp_tracker):
     assert temp_tracker.get_total_expenses() == 0.0
     assert temp_tracker.get_balance() == 0.0
     assert temp_tracker.get_expense_by_category() == {}
+
 
 
