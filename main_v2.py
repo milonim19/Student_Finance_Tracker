@@ -270,6 +270,53 @@ class FinanceTrackerGUI:
         self.chart_frame = ttk.Frame(analytics_frame)
         self.chart_frame.pack(fill='both', expand=True, padx=20, pady=10)
 
+    def create_budget_tab(self):
+        """
+        Create the budget management tab.
+        """
+        budget_frame = ttk.Frame(self.notebook)
+        self.notebook.add(budget_frame, text="💰 Budget")
+
+        # Title
+        ttk.Label(budget_frame, text="Budget Management",
+                  font=('Arial', 16, 'bold')).pack(pady=10)
+
+        # Set budget frame
+        set_budget_frame = ttk.LabelFrame(budget_frame, text="Set Category Budget",
+                                          padding=10)
+        set_budget_frame.pack(pady=10, padx=20, fill='x')
+
+        budget_row = ttk.Frame(set_budget_frame)
+        budget_row.pack(fill='x', pady=5)
+
+        ttk.Label(budget_row, text="Category:").pack(side=tk.LEFT, padx=5)
+        self.budget_category_var = tk.StringVar()
+        budget_cat_combo = ttk.Combobox(budget_row, textvariable=self.budget_category_var,
+                                        values=["Food", "Transportation", "Household",
+                                                "Entertainment", "Other"],
+                                        width=15)
+        budget_cat_combo.pack(side=tk.LEFT, padx=5)
+
+        ttk.Label(budget_row, text="Budget Amount ($):").pack(side=tk.LEFT, padx=5)
+        self.budget_amount_entry = ttk.Entry(budget_row, width=15)
+        self.budget_amount_entry.pack(side=tk.LEFT, padx=5)
+
+        ttk.Button(budget_row, text="Set Budget",
+                   command=self.set_budget).pack(side=tk.LEFT, padx=5)
+
+        # Budget status frame
+        status_frame = ttk.LabelFrame(budget_frame, text="Budget Status", padding=10)
+        status_frame.pack(pady=10, padx=20, fill='both', expand=True)
+
+        # Budget status display
+        self.budget_text = tk.Text(status_frame, height=15, width=80,
+                                   font=('Courier', 10))
+        self.budget_text.pack(fill='both', expand=True)
+
+        # Refresh button
+        ttk.Button(budget_frame, text="🔄 Refresh Budget Status",
+                   command=self.update_budget_display).pack(pady=10)
+    
     def add_transaction(self):
         """
         Add a new transaction from the input fields.
@@ -643,5 +690,6 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
 
