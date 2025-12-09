@@ -45,6 +45,70 @@ class FinanceTrackerGUI:
         # Display initial data
         self.update_all_displays()
 
+        def create_dashboard_tab(self):
+        """
+        Create the main dashboard tab with summary and quick actions.
+        """
+        dashboard_frame = ttk.Frame(self.notebook)
+        self.notebook.add(dashboard_frame, text="📊 Dashboard")
+
+        # Title
+        title_label = ttk.Label(dashboard_frame, text="Financial Dashboard",
+                                font=('Arial', 20, 'bold'))
+        title_label.pack(pady=10)
+
+        # Summary cards frame
+        cards_frame = ttk.Frame(dashboard_frame)
+        cards_frame.pack(pady=10, padx=20, fill='x')
+
+        # Income card
+        income_card = ttk.LabelFrame(cards_frame, text="💰 Total Income", padding=20)
+        income_card.grid(row=0, column=0, padx=10, pady=5, sticky='ew')
+        self.income_label = ttk.Label(income_card, text="$0.00",
+                                      font=('Arial', 24, 'bold'), foreground='green')
+        self.income_label.pack()
+
+        # Expenses card
+        expense_card = ttk.LabelFrame(cards_frame, text="💸 Total Expenses", padding=20)
+        expense_card.grid(row=0, column=1, padx=10, pady=5, sticky='ew')
+        self.expense_label = ttk.Label(expense_card, text="$0.00",
+                                       font=('Arial', 24, 'bold'), foreground='red')
+        self.expense_label.pack()
+
+        # Balance card
+        balance_card = ttk.LabelFrame(cards_frame, text="💵 Balance", padding=20)
+        balance_card.grid(row=0, column=2, padx=10, pady=5, sticky='ew')
+        self.balance_label = ttk.Label(balance_card, text="$0.00",
+                                       font=('Arial', 24, 'bold'))
+        self.balance_label.pack()
+
+        # Configure grid weights
+        cards_frame.columnconfigure((0, 1, 2), weight=1)
+
+        # Quick stats frame
+        stats_frame = ttk.LabelFrame(dashboard_frame, text="Quick Statistics", padding=10)
+        stats_frame.pack(pady=10, padx=20, fill='both', expand=True)
+
+        # Recent transactions preview
+        ttk.Label(stats_frame, text="Recent Transactions",
+                  font=('Arial', 12, 'bold')).pack(pady=5)
+
+        # Treeview for recent transactions
+        columns = ('Date', 'Category', 'Type', 'Amount')
+        self.dashboard_tree = ttk.Treeview(stats_frame, columns=columns,
+                                           show='headings', height=8)
+
+        for col in columns:
+            self.dashboard_tree.heading(col, text=col)
+            self.dashboard_tree.column(col, width=150)
+
+        scrollbar = ttk.Scrollbar(stats_frame, orient=tk.VERTICAL,
+                                  command=self.dashboard_tree.yview)
+        self.dashboard_tree.configure(yscroll=scrollbar.set)
+
+        self.dashboard_tree.pack(side=tk.LEFT, fill='both', expand=True)
+        scrollbar.pack(side=tk.RIGHT, fill='y')
+
 
     def create_transactions_tab(self):
         """
@@ -542,4 +606,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()
