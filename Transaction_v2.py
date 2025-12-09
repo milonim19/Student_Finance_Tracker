@@ -50,6 +50,14 @@ class Transaction:
             'Notes': self.notes
         }
 
+    def is_income(self):
+        """
+        Check if transaction is income.
+
+        Returns:
+            bool: True if income, False otherwise
+        """
+        return self.trans_type == "Income"
 
     def __str__(self):
         """
@@ -70,3 +78,4 @@ class Transaction:
         """
 
         return f"Transaction(date='{self.date}', category='{self.category}', amount={self.amount})"
+
