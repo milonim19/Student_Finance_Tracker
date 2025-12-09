@@ -409,6 +409,23 @@ class FinanceTracker:
 
         return trend
 
+        def export_to_csv(self, filename, start_date=None, end_date=None):
+        """
+        Export transactions to a CSV file.
+
+        Args:
+            filename (str): Output filename
+            start_date (str): Optional start date filter
+            end_date (str): Optional end date filter
+        """
+        df_export = self.df.copy()
+
+        if start_date:
+            df_export = df_export[df_export['Date'] >= start_date]
+        if end_date:
+            df_export = df_export[df_export['Date'] <= end_date]
+
+        df_export.to_csv(filename, index=False)
 
     def delete_transaction(self, index):
         """
@@ -422,6 +439,7 @@ class FinanceTracker:
             self.df = self.df.drop(index).reset_index(drop=True)
 
             self.save_data()
+
 
 
 
