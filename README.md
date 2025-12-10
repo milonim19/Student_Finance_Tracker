@@ -1,9 +1,9 @@
-# STUDENT FINANCE TRACKER APP
-# PROGRAMMED AND DESIGNED BY VANSHIKA KUKREJA AND MILONI MEHTA 
-
-# Student Finance Tracker (v2)
-
-A simple Tkinter app to track income/expenses, see totals, and keep everything in one place. This is built for our class project (Python)
+## STUDENT FINANCE TRACKER APP
+  A simple Tkinter app to track income/expenses, see totals, and keep everything in one place. This is built for our class project (Python)
+  
+## Developed by:
+  -  VANSHIKA KUKREJA
+  -  MILONI MEHTA 
 
 ## Why this repo exists
 We wanted a lightweight finance tool with a modern 'fintech' look (dark, minimal, readable).
