@@ -7,7 +7,7 @@
   -  MILONI MEHTA
 
 ## Project Summary
-- The project uses at least one advanced Python module (e.g., tkinter/ttk, csv) and has a GUI as the main way the user interacts with the app.
+- The project uses at least one advanced Python module (e.g., tkinter, csv) and has a GUI as the main way the user interacts with the app.
 - The GUI includes 5+ interactive features, such as adding transactions, selecting income/expense, entering amounts, viewing totals, loading/saving data, etc.
 - There are multiple meaningful classes organized across several .py files that import each other correctly.
 - The project includes clear comments and an easy-to-read README explaining how to run the program.
@@ -33,7 +33,7 @@
 ## How to run
 Run `main_v2_fintech.py` and program is compatible on windows and macOS operating system.
 This file is a wrapper around the existing GUI in `main_v2.py` (class `FinanceTrackerGUI`). 
-It loads a fintech ttk theme from `ui_theme_fintech.py` and then launches the same app with better styling. Functionality remains unchanged.
+It loads a fintech tkinter theme from `ui_theme_fintech.py` and then launches the same app with better styling. Functionality remains unchanged.
 
 
 ## Functionality
