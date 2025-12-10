@@ -1,4 +1,5 @@
-## STUDENT FINANCE TRACKER APP ~ _Your personal finance buddy made by students, for students._
+## STUDENT FINANCE TRACKER APP 
+Your personal finance buddy made by students, for students.
 
 Built with Python + Tkinter and styled like a modern fintech app, it lets you add income/expenses, view totals instantly, and keep your spending organized without any clutter.
   
