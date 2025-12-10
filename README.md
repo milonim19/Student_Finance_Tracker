@@ -3,15 +3,13 @@
   
 ## Developed by:
   -  VANSHIKA KUKREJA
-  -  MILONI MEHTA 
+  -  MILONI MEHTA
 
-## Why this repo exists
-We wanted a lightweight finance tool with a modern 'fintech' look (dark, minimal, readable).
-
-## How to run
-Run `main_v2_fintech.py` and program is compatible on windows and macOS operating system.
-This file is a wrapper around the existing GUI in `main_v2.py` (class `FinanceTrackerGUI`). 
-It loads a fintech ttk theme from `ui_theme_fintech.py` and then launches the same app with better styling. Functionality remains unchanged.
+## Project Summary
+- The project uses at least one advanced Python module (e.g., tkinter/ttk, csv) and has a GUI as the main way the user interacts with the app.
+- The GUI includes 5+ interactive features, such as adding transactions, selecting income/expense, entering amounts, viewing totals, loading/saving data, etc.
+- There are multiple meaningful classes organized across several .py files that import each other correctly.
+- The project includes clear comments and an easy-to-read README explaining how to run the program.
 
 ## Features
 - Add income/expense transactions
@@ -31,9 +29,10 @@ It loads a fintech ttk theme from `ui_theme_fintech.py` and then launches the sa
 └── transactions.csv        # sample data file (created/used by the app)
 ```
 
-## Requirements
-- Python 3.9+
-- Tkinter/ttk (usually included with Python)
+## How to run
+Run `main_v2_fintech.py` and program is compatible on windows and macOS operating system.
+This file is a wrapper around the existing GUI in `main_v2.py` (class `FinanceTrackerGUI`). 
+It loads a fintech ttk theme from `ui_theme_fintech.py` and then launches the same app with better styling. Functionality remains unchanged.
 
 
 ## Functionality
@@ -46,5 +45,5 @@ It loads a fintech ttk theme from `ui_theme_fintech.py` and then launches the sa
 5. **Run tests:** `python -m pytest -q` (or run the file directly if preferred)
 
 ## Notes
-- If the UI looks default/gray, the theme probably didn’t load — make sure you’re launching `main_v2_fintech.py` (not `main_v2.py`).
+If the UI looks gray, the theme probably didn’t load. Please make sure you’re launching `main_v2_fintech.py` (not `main_v2.py`).
 
