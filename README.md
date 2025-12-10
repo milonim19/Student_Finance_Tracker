@@ -1,5 +1,6 @@
 ## STUDENT FINANCE TRACKER APP
-  A simple Tkinter app to track income/expenses, see totals, and keep everything in one place. This is built for our class project (Python)
+Your personal finance buddy made by students, for students.
+Built with Python + Tkinter and styled like a modern fintech app, it lets you add income/expenses, view totals instantly, and keep your spending organized without any clutter.
   
 ## Developed by:
   -  VANSHIKA KUKREJA
